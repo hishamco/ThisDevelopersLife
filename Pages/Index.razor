@@ -1,0 +1,44 @@
+@using System
+@using System.Collections.Generic
+@using System.Linq;
+@using System.Reflection
+@using Microsoft.AspNetCore.Mvc
+@using Microsoft.AspNetCore.Mvc.Rendering
+@using ThisDevelopersLife
+@using ThisDevelopersLife.Models
+
+@model Episode
+
+@functions {
+    
+    public IEnumerable<Episode> RecentEpisodes {get; set;}
+    
+    public async Task OnGetAsync()
+    {
+        RecentEpisodes = GetRecentEpisodes();
+    }
+    
+}
+
+@{
+    Layout = "~/Views/Shared/_SiteLayout.cshtml";
+    ViewBag.Title = "Stories About Developers and Their Lives";
+}
+
+<div class= "container-wide" style="margin-bottom:36px">
+    @foreach(var episode in RecentEpisodes){
+    <div style="margin-right:22px;float:left;margin-bottom:22px;margin-top:36px" class="episode"> 
+        <a href='/Show?slug=@episode.Slug' class="showlink"> 
+            <img src="@Href("~/Images/" + episode.LeadImage)"
+                alt="@episode.Title" width="320" height="220"/>
+            <div class='title'> 
+                <p>@episode.Title</p> 
+                <div class='description'> 
+                    <p>@episode.Summary</p> 
+                </div> 
+            </div> 
+        </a> 
+    </div> 
+    <audio id="audio-@episode.Slug" preload="none" src="http://podtrac.com/pts/redirect.mp3/traffic.libsyn.com/devlife/@HtmlEncoder.Encode(episode.MediaFile)"></audio>
+    }
+</div>
