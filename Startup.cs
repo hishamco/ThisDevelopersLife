@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 
@@ -7,8 +8,21 @@ namespace ThisDevelopersLife
 {
     public class Startup
     {
+        public Startup(IHostingEnvironment env)
+        {
+            var builder = new ConfigurationBuilder()
+                .SetBasePath(env.ContentRootPath)
+                .AddIniFile("appsettings.ini");
+            
+            Configuration = builder.Build();
+        }
+        
+        public IConfigurationRoot Configuration { get; set; }
+        
         public void ConfigureServices(IServiceCollection services)
         {
+            services.Configure<AppSettings>(options => Configuration.GetSection("AppSettings").Bind(options));
+            
             services
                 .AddMvcCore()
                 .AddViews()
@@ -18,7 +32,7 @@ namespace ThisDevelopersLife
 
         public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
         {
-            loggerFactory.AddConsole(LogLevel.Debug);
+            loggerFactory.AddConsole(Configuration.GetSection("Logging"));
 
             app.UseStatusCodePages();
 
