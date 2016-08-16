@@ -1,5 +1,4 @@
 using System.Collections.Generic;
-using System.Linq;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using ThisDevelopersLife.Models;
 
