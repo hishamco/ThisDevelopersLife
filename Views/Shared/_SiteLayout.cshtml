@@ -21,10 +21,12 @@
 <meta name="twitter:image" content="http://www.thisdeveloperslife.com/@("Images/" + ViewBag.Show.LeadImage)">
 }
    
-    <link href='@Href("~/Styles/grid.css")' media='screen' rel='stylesheet' type='text/css' /> 
-    <link href='@Href("~/Styles/ie.css")' media='screen' rel='stylesheet' type='text/css' /> 
-    <link href='@Href("~/Styles/site.css")' media='screen' rel='stylesheet' type='text/css' /> 
-    <link href="@Href("~/favicon.ico")" rel="shortcut icon" type="image/x-icon" />
+   <environment names="Development,Production">
+       <link href="~/Styles/grid.css" media='screen' rel='stylesheet' type='text/css' /> 
+       <link href="~/Styles/ie.css" media='screen' rel='stylesheet' type='text/css' /> 
+       <link href="~/Styles/site.css" media='screen' rel='stylesheet' type='text/css' />
+   </environment> 
+    <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
 
     <link rel="alternate" type="application/rss+xml" title="This Developer's Life Podcast" href="http://feeds.feedburner.com/thisdeveloperslife" />   
     <!--[if lt IE 7]>
@@ -91,12 +93,14 @@
     </div>
 </body>
 </html>
-    
-<script src="http://ajax.aspnetcdn.com/ajax/jquery/jquery-1.4.2.min.js"></script>
-<script>
-  (window.jQuery || document.write('<script src="/Scripts/jquery-1.4.2.min.js"><\/script>'));
-</script>
-<script src="@Href("~/Scripts/IE9PodcastPlayerPlugin.js")" type='text/javascript' ></script>
+<environment names="Development">    
+    <script src="~/Scripts/IE9PodcastPlayerPlugin.js" type='text/javascript' ></script>
+    <script src="~/Scripts/jquery-1.4.2.min.js"></script>
+</environment>
+
+<environment names="Production">    
+    <script src="http://ajax.aspnetcdn.com/ajax/jquery/jquery-1.4.2.min.js"></script>
+</environment>
 
 <script>
     $(function(){
