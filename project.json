@@ -8,7 +8,7 @@
   "dependencies": {
     "Microsoft.AspNetCore.Diagnostics": "1.0.0",
     "Microsoft.EntityFrameworkCore.InMemory": "1.0.0",
-    "Microsoft.AspNetCore.Mvc.RazorPages": "1.0.0",
+    "Microsoft.AspNetCore.Mvc.RazorPages": "0.1.0",
     "Microsoft.AspNetCore.Server.Kestrel": "1.0.0",
     "Microsoft.AspNetCore.StaticFiles": "1.0.0",   
     "Microsoft.Extensions.Configuration.Binder": "1.0.0",
