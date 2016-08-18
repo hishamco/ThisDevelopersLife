@@ -22,7 +22,7 @@
 
 @{
     Layout = "~/Views/Shared/_SiteLayout.cshtml";
-    ViewBag.Title = CurrentEpisode.Title;
+    ViewBag.Show = CurrentEpisode;
 }
 
 <audio id="audio-@CurrentEpisode.Slug" preload="none" src="http://podtrac.com/pts/redirect.mp3/traffic.libsyn.com/devlife/@HtmlEncoder.Encode(CurrentEpisode.MediaFile)"></audio>
