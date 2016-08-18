@@ -4,11 +4,12 @@ namespace ThisDevelopersLife.Models
 {
     public class TDLContext : DbContext
     {      
-        public DbSet<Episode> Episodes { get; set; }
-
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        public TDLContext(DbContextOptions options)
+            : base(options)
         {
-            optionsBuilder.UseInMemoryDatabase();
+
         }
+        
+        public DbSet<Episode> Episodes { get; set; }
     }
 }

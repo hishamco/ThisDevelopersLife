@@ -8,12 +8,17 @@ namespace ThisDevelopersLife.Services
 {
     public class InMemoryShowService : IShowService
     {
-        private static readonly TDLContext _context = new TDLContext();
+        private readonly TDLContext _db;
+        
+        public InMemoryShowService(TDLContext db)
+        {
+            _db = db;
+        }
         
         public Task AddAsync(Episode episode)
         {
-            _context.Add(episode);
-            _context.SaveChangesAsync();
+            _db.Add(episode);
+            _db.SaveChangesAsync();
             return Task.FromResult(0);
         }
         
@@ -70,7 +75,7 @@ namespace ThisDevelopersLife.Services
                }
             };
             
-            _context.SaveChanges();           
+            _db.SaveChanges();           
             return Task.FromResult(episodes.AsEnumerable());
         }
     }

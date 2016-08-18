@@ -1,8 +1,10 @@
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
+using ThisDevelopersLife.Models;
 using ThisDevelopersLife.Services;
 
 namespace ThisDevelopersLife
@@ -22,6 +24,8 @@ namespace ThisDevelopersLife
         
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddDbContext<TDLContext>(options => options.UseInMemoryDatabase());
+            
             services.AddTransient<IShowService, InMemoryShowService>();
             
             services.Configure<AppSettings>(options => Configuration.GetSection("AppSettings").Bind(options));
