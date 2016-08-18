@@ -15,8 +15,7 @@
     
     public async Task OnGetAsync()
     {
-        var slug = Context.Request.Query["slug"].Single();
-        CurrentEpisode = GetEpisode(slug);
+        CurrentEpisode = await GetEpisode();
     }
     
 }

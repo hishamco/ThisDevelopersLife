@@ -14,7 +14,7 @@
     
     public async Task OnGetAsync()
     {
-        RecentEpisodes = GetRecentEpisodes();
+        RecentEpisodes = await GetRecentEpisodes();
     }
     
 }

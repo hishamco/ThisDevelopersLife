@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
+using ThisDevelopersLife.Services;
 
 namespace ThisDevelopersLife
 {
@@ -21,6 +22,8 @@ namespace ThisDevelopersLife
         
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddTransient<IShowService, InMemoryShowService>();
+            
             services.Configure<AppSettings>(options => Configuration.GetSection("AppSettings").Bind(options));
             
             services
