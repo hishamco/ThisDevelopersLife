@@ -10,6 +10,6 @@ namespace ThisDevelopersLife.Models
         public string LeadImage { get; set; }
         public string Slug { get; set; }
         public string MediaFile { get; set; }
-        public DateTime PublishedAt { get; set; }
+        public string PublishedAt { get; set; }
     }
 }
