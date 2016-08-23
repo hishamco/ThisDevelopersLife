@@ -25,8 +25,10 @@ namespace ThisDevelopersLife
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddDbContext<TDLContext>(options => options.UseInMemoryDatabase());
+            //services.AddDbContext<TDLContext>(options => options.UseSqlite("Filename=./TDL.db"));
             
             services.AddTransient<IShowService, InMemoryShowService>();
+            //services.AddTransient<IShowService, SqLiteShowService>();
             
             services.Configure<AppSettings>(options => Configuration.GetSection("AppSettings").Bind(options));
             
