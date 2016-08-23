@@ -10,25 +10,34 @@ using ThisDevelopersLife.Services;
 namespace ThisDevelopersLife
 {
     public class Startup
-    {
+    {       
         public Startup(IHostingEnvironment env)
         {
+            Envirnoment = env;
+            
             var builder = new ConfigurationBuilder()
-                .SetBasePath(env.ContentRootPath)
+                .SetBasePath(Envirnoment.ContentRootPath)
                 .AddIniFile("appsettings.ini");
             
             Configuration = builder.Build();
         }
         
+        public IHostingEnvironment Envirnoment { get; set; }
+        
         public IConfigurationRoot Configuration { get; set; }
         
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddDbContext<TDLContext>(options => options.UseInMemoryDatabase());
-            //services.AddDbContext<TDLContext>(options => options.UseSqlite("Filename=./TDL.db"));
-            
-            services.AddTransient<IShowService, InMemoryShowService>();
-            //services.AddTransient<IShowService, SqLiteShowService>();
+            if (Envirnoment.IsDevelopment())
+            {
+                services.AddDbContext<TDLContext>(options => options.UseInMemoryDatabase());
+                services.AddTransient<IShowService, InMemoryShowService>();
+            }
+            else
+            {
+                services.AddDbContext<TDLContext>(options => options.UseSqlite("Filename=./TDL.db"));
+                services.AddTransient<IShowService, SqLiteShowService>();
+            }
             
             services.Configure<AppSettings>(options => Configuration.GetSection("AppSettings").Bind(options));
             
@@ -39,13 +48,13 @@ namespace ThisDevelopersLife
                 .AddRazorPages();
         }
 
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
+        public void Configure(IApplicationBuilder app, ILoggerFactory loggerFactory)
         {
             loggerFactory.AddConsole(Configuration.GetSection("Logging"));
 
             app.UseStatusCodePages();
 
-            if (env.IsDevelopment())
+            if (Envirnoment.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
             }
