@@ -1,5 +1,3 @@
-using System;
-
 namespace ThisDevelopersLife.Models
 {
     public class Episode

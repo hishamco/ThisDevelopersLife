@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -59,7 +58,7 @@ namespace ThisDevelopersLife.Services
                 },
                 new Episode() {
                     Title = "3.0.1 Cancer", 
-                    Slug ="301-Cancer", 
+                    Slug ="3-0-1-Cancer", 
                     Summary = "Mo and Scott share their thoughts and struggle in this cancer diary they started the day after Mo was diagnosed.", 
                     LeadImage = "301-Cancer.jpg", 
                     MediaFile = "http://podtrac.com/pts/redirect.mp3/traffic.libsyn.com/devlife/301-Cancer.mp3", 
@@ -67,7 +66,7 @@ namespace ThisDevelopersLife.Services
                 },
                 new Episode() {
                     Title = "1.1.4 Obsession", 
-                    Slug ="114-Obsession", 
+                    Slug ="1-1-4-Obsession", 
                     Summary = "Rob Sullivan talks about his obsessiveness and how it helps him, and hinders him in his job. Rory Blythe and Scott then talk openly about Rory's compulsion to keep learning - which he has embraced completely.", 
                     LeadImage = "114-Obsession.jpg", 
                     MediaFile = "http://podtrac.com/pts/redirect.mp3/traffic.libsyn.com/devlife/114_Obsession.mp3", 
