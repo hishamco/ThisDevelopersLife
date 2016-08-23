@@ -1,5 +1,6 @@
 @using Microsoft.AspNetCore.Mvc.Rendering
 @using ThisDevelopersLife.Models
+@addTagHelper *, ThisDevelopersLife
 @inherits Show
 
 @functions {
@@ -28,17 +29,10 @@
             </div>
     <h1>@CurrentEpisode.Title</h1>
             <div class="column span-11 bpad-12">
-                <div class='tweet-button'> 
-                <a class='twitter-share-button' data-count='horizontal' 
-                data-related='robconery:shanselman' data-text='@CurrentEpisode.Title' 
-                data-url='http://thisdeveloperslife.com/Show?slug=@CurrentEpisode.Slug' 
-                data-via='shanselman' href='http://twitter.com/share'>Tweet</a> 
-                <script src='http://platform.twitter.com/widgets.js' type='text/javascript'></script> 
-                </div>
+                <twitter-tweet title="@CurrentEpisode.Title" slug="@CurrentEpisode.Slug"></twitter-tweet>
             </div>
             <div class="column span-24 bmargin-24">
-                @*Partials.Facebook(CurrentEpisode)*@
-                <script src="http://connect.facebook.net/en_US/all.js#xfbml=1"></script><fb:like href="http://thisdeveloperslife.com/Show?slug=@CurrentEpisode.Slug" show_faces="true" width="450" action="recommend"></fb:like>
+                <facebook-recommend slug="@CurrentEpisode.Slug"></facebook-recommend>
             </div>
             <h2>
                 <a href="http://podtrac.com/pts/redirect.mp3/traffic.libsyn.com/devlife/@HtmlEncoder.Encode(CurrentEpisode.MediaFile)">
