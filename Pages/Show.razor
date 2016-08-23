@@ -46,7 +46,7 @@
                 </a>
                 
             </h2>
-            @await Html.PartialAsync($"_{CurrentEpisode.Title.ToLower().Replace(" ","-").Replace(".","-")}")
+            @await Html.PartialAsync("_" + CurrentEpisode.Slug)
         
         </div>
         <div class='column span-6'> 
