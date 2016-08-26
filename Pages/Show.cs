@@ -1,4 +1,3 @@
-using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using ThisDevelopersLife.Models;
@@ -15,10 +14,8 @@ namespace ThisDevelopersLife.Pages
             _showService = showService;
         }
         
-        public async Task<Episode> GetEpisode()
+        public async Task<Episode> GetEpisode(string slug)
         {
-            var slug = Context.Request.Query["slug"].Single();
-
             return await _showService.FindAsync(slug);
         }
     }

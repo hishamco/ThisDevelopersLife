@@ -22,7 +22,7 @@
 <div class= "container-wide" style="margin-bottom:36px">
     @foreach(var episode in RecentEpisodes){
     <div style="margin-right:22px;float:left;margin-bottom:22px;margin-top:36px" class="episode"> 
-        <a href='/Show?slug=@episode.Slug' class="showlink"> 
+        <a href='/Show/@episode.Slug' class="showlink"> 
             <img src="@Href("~/Images/" + episode.LeadImage)"
                 alt="@episode.Title" width="320" height="220"/>
             <div class='title'> 
